@@ -60,4 +60,26 @@ public class AssetServiceImpl implements AssetService {
 		return assets;
 	}
 
+	@Override
+	public Asset getById(Integer id) throws Exception{
+		return assetRepository.findById(id).get();
+	}
+
+	@Override
+	public Iterable<Asset> findByTipoCompra(String tipoCompra) throws Exception {
+		return assetRepository.findByTipo(tipoCompra);
+	}
+
+	@Override
+	public Iterable<Asset> findByFechaCompra(String fechaDeCompra) throws Exception {	
+		//parse string to LocalDate
+		LocalDate datetime = LocalDate.parse(fechaDeCompra);	
+		return  assetRepository.findByFechaDeCompra(datetime);
+	}
+
+	@Override
+	public Iterable<Asset> findBySerial(String serial) throws Exception {
+		return assetRepository.findBySerial(serial);
+	}
+
 }

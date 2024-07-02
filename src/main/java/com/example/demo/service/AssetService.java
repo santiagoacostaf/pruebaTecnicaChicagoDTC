@@ -15,5 +15,13 @@ public interface AssetService {
     Integer deleteById(Integer assetId) throws Exception;
 
     Iterable<Asset> getAllAssets();
+
+    Asset getById(Integer id) throws Exception;
+
+    Iterable<Asset> findByTipoCompra(String tipoCompra) throws Exception;
+
+    Iterable<Asset> findByFechaCompra(String fechaCompra) throws Exception;
+    
+    Iterable<Asset> findBySerial(String Serial) throws Exception;
     
 }

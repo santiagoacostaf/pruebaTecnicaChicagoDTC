@@ -150,10 +150,10 @@ public class AssetController {
 	 * @param assetId
 	 * @return the asset with the correct status
 	 */
-	/*@GetMapping("/get")
+	@GetMapping("/get")
 	public  ResponseEntity<Object> getById(@RequestParam Integer assetId) {
 		try {
-			Asset asset = assetRepository.findById(assetId).get();
+			Asset asset = assetService.getById(assetId);
 			return ResponseEntity.status(HttpStatus.OK).body(asset);
 		}catch(Exception e) {
 			if(e.getMessage()== "No value present") {
@@ -163,12 +163,12 @@ public class AssetController {
 				return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body("Error al consultar el activo");
 			}
 		}
-	}*/
+	}
 	
-	/*@GetMapping("/findByTipoDeCompra")
+	@GetMapping("/findByTipoDeCompra")
 	public  ResponseEntity<Object> getByTipo(@RequestParam String tipoCompra) {
 		try {
-			Iterable<Asset> assets = assetRepository.findByTipo(tipoCompra);//Id(assetId).get();
+			Iterable<Asset> assets = assetService.findByTipoCompra(tipoCompra);
 			return ResponseEntity.status(HttpStatus.OK).body(assets);
 		}catch(Exception e) {
 			if(e.getMessage()== "No value present") {
@@ -183,10 +183,7 @@ public class AssetController {
 	@GetMapping("/findByFechaCompra")
 	public  ResponseEntity<Object> getByFecha(@RequestParam String fechaCompra) {
 		try {
-			//parse string to LocalDate
-			
-			LocalDate datetime = LocalDate.parse(fechaCompra);
-			Iterable<Asset> assets = assetRepository.findByFechaDeCompra(datetime);
+			Iterable<Asset> assets = assetService.findByFechaCompra(fechaCompra);
 			return ResponseEntity.status(HttpStatus.OK).body(assets);
 		}catch(Exception e) {
 			System.out.println(e.getMessage());
@@ -202,7 +199,7 @@ public class AssetController {
 	@GetMapping("/findBySerial")
 	public  ResponseEntity<Object> getBySerial(@RequestParam String serial) {
 		try {
-			Iterable<Asset> assets = assetRepository.findBySerial(serial);//Id(assetId).get();
+			Iterable<Asset> assets = assetService.findBySerial(serial);//Id(assetId).get();
 			return ResponseEntity.status(HttpStatus.OK).body(assets);
 		}catch(Exception e) {
 			if(e.getMessage()== "No value present") {
@@ -212,5 +209,5 @@ public class AssetController {
 				return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body("Error al consultar el activo");
 			}
 		}
-	}*/
+	}
 }
