@@ -2,8 +2,9 @@ Spring boot project for managing a companie's assets
 
 Run Instructions:
 1. Install a mysql server that runs the server on port: 3306 and host: localhost
-2. Configure the database access by modifying user and password on application.properties file
-3. Run the application.
+2. create the database called db_assets with: >create database db_assets;
+3. Configure the database access by modifying user and password on application.properties file
+4. Run the application.
 
 Use Instructions:
 
