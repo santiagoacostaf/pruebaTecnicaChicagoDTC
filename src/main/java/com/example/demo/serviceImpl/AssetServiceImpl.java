@@ -29,8 +29,7 @@ public class AssetServiceImpl implements AssetService {
 		//parse the Local date
 		Asset asset = new Asset(name,descripcion,tipo,serial,parsedNumeroInternoInventario,peso,alto,ancho,largo,valor,LocalDate.now());
 		try {
-			assetRepository.save(asset);
-            return Optional.of(asset);
+            return Optional.of(assetRepository.save(asset));
 		}catch(Exception e) {
 			parentLogger.debug(e.getMessage());
 			return Optional.of(null);
@@ -43,8 +42,7 @@ public class AssetServiceImpl implements AssetService {
 		Asset asset = assetRepository.findById(assetId).get(); 
 		asset = new Asset(name,descripcion,tipo,serial,numeroInternoInventario,peso,alto,ancho,largo,valor,LocalDate.now());
 		asset.setId(assetId);
-		assetRepository.save(asset);
-		return Optional.of(asset);
+		return Optional.of(assetRepository.save(asset));
 	}
 
 	@Override
