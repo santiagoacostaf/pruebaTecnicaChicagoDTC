@@ -13,17 +13,16 @@ import com.example.demo.Model.Pokemon;
 
 public class PokemonConvertUtil {
     
+    
     public List<Pokemon> convertToList(LinkedHashMap pokemons) {
         Iterator<HashMap> iterator = ((List<HashMap>) pokemons.get("results")).iterator();
         List<Pokemon> returnList = new ArrayList<>();
-        Pokemon currentPokemon = new Pokemon();
         HashMap currentIterator;
         while(iterator.hasNext()) {
             currentIterator = iterator.next();
-            currentPokemon.setName((String)currentIterator.get("name"));
-            currentPokemon.setUrl((String)currentIterator.get("url"));
+            Pokemon currentPokemon = PokemonFactory.createPokemon((String)currentIterator.get("name"), 
+                (String)currentIterator.get("url"));
             returnList.add(currentPokemon);
-            currentPokemon = new Pokemon();
         }
         return returnList;
     }
