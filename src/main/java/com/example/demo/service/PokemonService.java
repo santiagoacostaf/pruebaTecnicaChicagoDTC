@@ -7,5 +7,5 @@ import com.example.demo.Model.Pokemon;
 
 public interface PokemonService {
     
-    LinkedHashMap getAllPokemons();
+    List<Pokemon> getAllPokemons();
 }

@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,9 +26,9 @@ public class PokemonController {
 
     @GetMapping("/all")
 	public ResponseEntity<Object> getAllPokemons() {
-        LinkedHashMap pokemons = pokemonService.getAllPokemons();
+        List<Pokemon> pokemons = pokemonService.getAllPokemons();
 		logger.info("pokemons:");
 		logger.info(pokemons);
-        return null;
+       	return ResponseEntity.status(HttpStatus.OK).body(pokemons);
     }
 }
