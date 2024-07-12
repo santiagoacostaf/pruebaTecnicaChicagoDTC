@@ -9,6 +9,8 @@ Use Instructions:
 
 1. For Querying the list of pokemon http://localhost:8080/pokemon/all?page=0&size=10
 2. To query the second page and the size the parameters must change ?page=<page you want>&size=<size you want>
+3. The list should be displayed
+![alt text](image.png)
 
 JUSTIFICACIÓN DE LOS PATRONES DE DISEÑO:
 
