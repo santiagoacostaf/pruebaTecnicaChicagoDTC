@@ -1,25 +1,17 @@
-Spring boot project for managing a companie's assets
+Spring boot project for paginating a pokemon's query
 
 Run Instructions:
-1. Install a mysql server that runs the server on port: 3306 and host: localhost
-2. create the database called db_assets with: >create database db_assets;
-3. Configure the database access by modifying user and password on application.properties file
-4. Run the application.
+1. Install java version 17
+2. Run the spring boot application .
+3. the application must run on  http://localhost:8080
 
 Use Instructions:
 
-1. For creating an asset, send a post request with the url with params like: "localhost:8080/demo/new?name=name&tipo=tipo1&descripcion=descript.&serial=serial1&numeroInternoInventario=100&peso=2&alto=3&ancho=4&largo=5&valor=6&fechaDeCompra=12-05-1972"
+1. For Querying the list of pokemon http://localhost:8080/pokemon/all?page=0&size=10
+2. To query the second page and the size the parameters must change ?page=<page you want>&size=<size you want>
 
-2. For modifying the asset, send a post request with url params like: localhost:8080/demo/update?assetId=1&name=nameUpdated&tipo=tipo1Updated&descripcion=descript.&serial=serial1&numeroInternoInventario=100&peso=2&alto=3&ancho=4&largo=5&valor=6&fechaDeCompra=12-05-1973
+JUSTIFICACIÓN DE LOS PATRONES DE DISEÑO:
 
-3. For deleting the asset, send a delete url with params like: localhost:8080/demo/delete?assetId=1
+Patron singleton: Se está haciendo uso de este patrón puesto que se está usando la anotación @Service en PokemonService, esto le indica a la librería Spring que solo puede haber una instancia de este servicio haciendo uso de este patrón
 
-4. For Listing 1 asset, send a get request with and url like: localhost:8080/demo/get?assetId=2
-
-5. For Listing all assets, send a get request with url: localhost:8080/demo/all
-
-6. For filtering by 'tipoDeCompra', with a get request: localhost:8080/demo/findByTipoDeCompra?tipoCompra=tipo1
-
-7. For filtering by 'findByFechaCompra' with a get request: localhost:8080/demo/findByFechaCompra?fechaCompra=2024-07-02
-
-8. For filtering by serial with a get request: localhost:8080/demo/findBySerial?serial=serial1
+Patron Factory: Se está haciendo uso de este patrón para crear objetos de tipo Pokemon encapsulando esta funcionalidad y haciendola mas facil de modificar.
